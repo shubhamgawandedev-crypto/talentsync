@@ -2,6 +2,7 @@
 Django settings for config project.
 Production Ready TalentSync Settings
 """
+
 import os
 from pathlib import Path
 
@@ -171,32 +172,18 @@ DATABASES = {
 
         'ENGINE': 'django.db.backends.postgresql',
 
-        'NAME': config(
-            'DB_NAME',
-            default='talentsync'
-        ),
+        'NAME': config('talentsync'),
 
-        'USER': config(
-            'DB_USER',
-            default='postgres'
-        ),
+        'USER': config('postgres'),
 
-        'PASSWORD': config(
-            'DB_PASSWORD',
-            default='admin123'
-        ),
+        'PASSWORD': config('admin123'),
 
-        'HOST': config(
-            'DB_HOST',
-            default='127.0.0.1'
-        ),
+        'HOST': config('127.0.0.1'),
 
-        'PORT': config(
-            'DB_PORT',
-            default='5433'
-        ),
+        'PORT': config('5433'),
     }
 }
+
 
 # =========================================================
 # PASSWORD VALIDATION
@@ -280,7 +267,6 @@ ACCOUNT_SIGNUP_FIELDS = [
 
     'password2*',
 ]
-
 
 ACCOUNT_UNIQUE_EMAIL = True
 
