@@ -3,9 +3,7 @@ Django settings for config project.
 Production Ready TalentSync Settings
 """
 
-import os
 from pathlib import Path
-
 from decouple import config
 
 
@@ -28,7 +26,11 @@ DEBUG = config(
     cast=bool
 )
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    '.onrender.com',
+]
 
 
 # =========================================================
@@ -40,47 +42,31 @@ INSTALLED_APPS = [
     # DJANGO APPS
 
     'django.contrib.admin',
-
     'django.contrib.auth',
-
     'django.contrib.contenttypes',
-
     'django.contrib.sessions',
-
     'django.contrib.messages',
-
     'django.contrib.staticfiles',
-
     'django.contrib.sites',
-
 
     # THIRD PARTY APPS
 
     'rest_framework',
-
     'rest_framework_simplejwt',
-
     'corsheaders',
 
     'allauth',
-
     'allauth.account',
-
     'allauth.socialaccount',
 
     'allauth.socialaccount.providers.google',
-
     'allauth.socialaccount.providers.linkedin_oauth2',
-
 
     # CUSTOM APPS
 
     'users',
-
     'jobs',
-
     'applications',
-
     'dashboard',
 ]
 
@@ -125,21 +111,16 @@ ROOT_URLCONF = 'config.urls'
 # =========================================================
 
 TEMPLATES = [
-
     {
-
-        'BACKEND':
-        'django.template.backends.django.DjangoTemplates',
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
 
         'DIRS': [
-
-            BASE_DIR / 'templates'
+            BASE_DIR / 'templates',
         ],
 
         'APP_DIRS': True,
 
         'OPTIONS': {
-
             'context_processors': [
 
                 'django.template.context_processors.debug',
@@ -167,20 +148,18 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # =========================================================
 
 DATABASES = {
-
     'default': {
-
         'ENGINE': 'django.db.backends.postgresql',
 
-        'NAME': config('talentsync'),
+        'NAME': config('DB_NAME'),
 
-        'USER': config('postgres'),
+        'USER': config('DB_USER'),
 
-        'PASSWORD': config('admin123'),
+        'PASSWORD': config('DB_PASSWORD'),
 
-        'HOST': config('127.0.0.1'),
+        'HOST': config('DB_HOST'),
 
-        'PORT': config('5433'),
+        'PORT': config('DB_PORT'),
     }
 }
 
@@ -192,30 +171,25 @@ DATABASES = {
 AUTH_PASSWORD_VALIDATORS = [
 
     {
-
         'NAME':
         'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
 
     {
-
         'NAME':
         'django.contrib.auth.password_validation.MinimumLengthValidator',
 
         'OPTIONS': {
-
             'min_length': 8,
         }
     },
 
     {
-
         'NAME':
         'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
 
     {
-
         'NAME':
         'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
@@ -253,18 +227,13 @@ SITE_ID = 1
 # =========================================================
 
 ACCOUNT_LOGIN_METHODS = {
-
     'email'
 }
 
 ACCOUNT_SIGNUP_FIELDS = [
-
     'email*',
-
     'username*',
-
     'password1*',
-
     'password2*',
 ]
 
@@ -297,8 +266,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-
-    BASE_DIR / 'static'
+    BASE_DIR / 'static',
 ]
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
@@ -371,15 +339,17 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 # SECURITY SETTINGS
 # =========================================================
 
-CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = not DEBUG
 
-SESSION_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = not DEBUG
 
 SECURE_BROWSER_XSS_FILTER = True
 
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
 X_FRAME_OPTIONS = 'DENY'
+
+SECURE_SSL_REDIRECT = not DEBUG
 
 
 # =========================================================
