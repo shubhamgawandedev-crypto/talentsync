@@ -1,0 +1,638 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="home-wrapper">
+
+    <!-- =========================================
+         HERO SECTION
+    ========================================== -->
+
+    <section class="mb-4">
+
+        <div
+            class="card border-0 shadow-sm rounded-4 overflow-hidden"
+            style="
+                background:
+                linear-gradient(
+                    135deg,
+                    #4f46e5,
+                    #2563eb
+                );
+            "
+        >
+
+            <div class="card-body p-4 p-lg-5">
+
+                <div class="row align-items-center">
+
+                    <!-- LEFT -->
+
+                    <div class="col-lg-7 text-white">
+
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+
+                            <span
+                                class="badge bg-light text-dark rounded-pill px-3 py-2"
+                            >
+
+                                🚀 AI Powered Recruitment
+
+                            </span>
+
+                            <span
+                                class="badge bg-white bg-opacity-25 text-white rounded-pill px-3 py-2"
+                            >
+
+                                Trusted By Recruiters
+
+                            </span>
+
+                        </div>
+
+                        <h1
+                            class="fw-bold mb-3"
+                            style="
+                                font-size:
+                                clamp(2.2rem,5vw,4rem);
+                                line-height:1.1;
+                            "
+                        >
+
+                            Find Your Dream Job With
+
+                            <span class="text-warning">
+
+                                TalentSync
+
+                            </span>
+
+                        </h1>
+
+                        <p
+                            class="opacity-75 mb-4"
+                            style="
+                                max-width:650px;
+                            "
+                        >
+
+                            Modern recruitment platform connecting recruiters
+                            and candidates through intelligent hiring workflows,
+                            professional profiles, and real opportunities.
+
+                        </p>
+
+                        <!-- BUTTONS -->
+
+                        <div class="d-flex flex-wrap gap-3 mb-4">
+
+                            <a
+                                href="/jobs/"
+                                class="btn btn-light px-4 py-2"
+                            >
+
+                                <i class="bi bi-search me-1"></i>
+
+                                Explore Jobs
+
+                            </a>
+
+                            <a
+                                href="/register/"
+                                class="btn btn-outline-light px-4 py-2"
+                            >
+
+                                <i class="bi bi-person-plus-fill me-1"></i>
+
+                                Get Started
+
+                            </a>
+
+                        </div>
+
+                        <!-- STATS -->
+
+                        <div class="row g-3">
+
+                            <div class="col-4">
+
+                                <h3
+                                    class="fw-bold mb-1 counter"
+                                    data-target="250"
+                                >
+
+                                    250
+
+                                </h3>
+
+                                <small class="opacity-75">
+
+                                    Companies
+
+                                </small>
+
+                            </div>
+
+                            <div class="col-4">
+
+                                <h3
+                                    class="fw-bold mb-1 counter"
+                                    data-target="1200"
+                                >
+
+                                    1200
+
+                                </h3>
+
+                                <small class="opacity-75">
+
+                                    Jobs
+
+                                </small>
+
+                            </div>
+
+                            <div class="col-4">
+
+                                <h3
+                                    class="fw-bold mb-1 counter"
+                                    data-target="5000"
+                                >
+
+                                    5000
+
+                                </h3>
+
+                                <small class="opacity-75">
+
+                                    Candidates
+
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- RIGHT -->
+
+                    <div class="col-lg-5 text-center mt-4 mt-lg-0">
+
+                        <img
+                            src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png"
+                            class="img-fluid floating"
+                            style="max-width:320px;"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         FEATURES
+    ========================================== -->
+
+    <section class="mb-4">
+
+        <div class="text-center mb-4">
+
+            <span
+                class="badge bg-primary rounded-pill px-3 py-2 mb-2"
+            >
+
+                FEATURES
+
+            </span>
+
+            <h2 class="fw-bold mb-2">
+
+                Why Choose TalentSync?
+
+            </h2>
+
+            <p class="text-muted mb-0">
+
+                Everything needed for modern recruitment workflows.
+
+            </p>
+
+        </div>
+
+        <div class="row g-3">
+
+            <!-- RECRUITERS -->
+
+            <div class="col-lg-4">
+
+                <div
+                    class="card border-0 shadow-sm rounded-4 h-100 job-card"
+                >
+
+                    <div class="card-body p-4 text-center">
+
+                        <div
+                            class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                            style="width:80px;height:80px;"
+                        >
+
+                            <i
+                                class="bi bi-briefcase-fill text-primary"
+                                style="font-size:32px;"
+                            ></i>
+
+                        </div>
+
+                        <h5 class="fw-bold mb-2">
+
+                            Recruiters
+
+                        </h5>
+
+                        <p class="text-muted mb-0">
+
+                            Post jobs,
+                            manage applications,
+                            and streamline hiring professionally.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CANDIDATES -->
+
+            <div class="col-lg-4">
+
+                <div
+                    class="card border-0 shadow-sm rounded-4 h-100 job-card"
+                >
+
+                    <div class="card-body p-4 text-center">
+
+                        <div
+                            class="bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                            style="width:80px;height:80px;"
+                        >
+
+                            <i
+                                class="bi bi-people-fill text-success"
+                                style="font-size:32px;"
+                            ></i>
+
+                        </div>
+
+                        <h5 class="fw-bold mb-2">
+
+                            Candidates
+
+                        </h5>
+
+                        <p class="text-muted mb-0">
+
+                            Build profiles,
+                            upload resumes,
+                            and apply from anywhere.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ANALYTICS -->
+
+            <div class="col-lg-4">
+
+                <div
+                    class="card border-0 shadow-sm rounded-4 h-100 job-card"
+                >
+
+                    <div class="card-body p-4 text-center">
+
+                        <div
+                            class="bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                            style="width:80px;height:80px;"
+                        >
+
+                            <i
+                                class="bi bi-bar-chart-fill text-warning"
+                                style="font-size:32px;"
+                            ></i>
+
+                        </div>
+
+                        <h5 class="fw-bold mb-2">
+
+                            Analytics
+
+                        </h5>
+
+                        <p class="text-muted mb-0">
+
+                            Modern dashboards,
+                            hiring insights,
+                            and platform analytics.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         HOW IT WORKS
+    ========================================== -->
+
+    <section class="mb-4">
+
+        <div
+            class="card border-0 shadow-sm rounded-4 overflow-hidden"
+        >
+
+            <div class="card-body p-4 p-lg-5">
+
+                <div class="text-center mb-4">
+
+                    <span
+                        class="badge bg-success rounded-pill px-3 py-2 mb-2"
+                    >
+
+                        SIMPLE PROCESS
+
+                    </span>
+
+                    <h2 class="fw-bold mb-2">
+
+                        How TalentSync Works
+
+                    </h2>
+
+                    <p class="text-muted mb-0">
+
+                        Fast and efficient recruitment process.
+
+                    </p>
+
+                </div>
+
+                <div class="row g-3 text-center">
+
+                    <!-- STEP 1 -->
+
+                    <div class="col-md-3">
+
+                        <div
+                            class="card border-0 bg-light rounded-4 h-100"
+                        >
+
+                            <div class="card-body p-4">
+
+                                <div
+                                    class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3"
+                                    style="width:65px;height:65px;"
+                                >
+
+                                    <h4 class="fw-bold mb-0">
+
+                                        1
+
+                                    </h4>
+
+                                </div>
+
+                                <h6 class="fw-bold mb-2">
+
+                                    Register
+
+                                </h6>
+
+                                <p class="text-muted small mb-0">
+
+                                    Create recruiter or candidate account.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- STEP 2 -->
+
+                    <div class="col-md-3">
+
+                        <div
+                            class="card border-0 bg-light rounded-4 h-100"
+                        >
+
+                            <div class="card-body p-4">
+
+                                <div
+                                    class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3"
+                                    style="width:65px;height:65px;"
+                                >
+
+                                    <h4 class="fw-bold mb-0">
+
+                                        2
+
+                                    </h4>
+
+                                </div>
+
+                                <h6 class="fw-bold mb-2">
+
+                                    Build Profile
+
+                                </h6>
+
+                                <p class="text-muted small mb-0">
+
+                                    Add skills and professional details.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- STEP 3 -->
+
+                    <div class="col-md-3">
+
+                        <div
+                            class="card border-0 bg-light rounded-4 h-100"
+                        >
+
+                            <div class="card-body p-4">
+
+                                <div
+                                    class="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3"
+                                    style="width:65px;height:65px;"
+                                >
+
+                                    <h4 class="fw-bold mb-0">
+
+                                        3
+
+                                    </h4>
+
+                                </div>
+
+                                <h6 class="fw-bold mb-2">
+
+                                    Apply Jobs
+
+                                </h6>
+
+                                <p class="text-muted small mb-0">
+
+                                    Explore and apply instantly.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- STEP 4 -->
+
+                    <div class="col-md-3">
+
+                        <div
+                            class="card border-0 bg-light rounded-4 h-100"
+                        >
+
+                            <div class="card-body p-4">
+
+                                <div
+                                    class="bg-danger text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3"
+                                    style="width:65px;height:65px;"
+                                >
+
+                                    <h4 class="fw-bold mb-0">
+
+                                        4
+
+                                    </h4>
+
+                                </div>
+
+                                <h6 class="fw-bold mb-2">
+
+                                    Get Hired
+
+                                </h6>
+
+                                <p class="text-muted small mb-0">
+
+                                    Recruiters connect with talent.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         CTA
+    ========================================== -->
+
+    <section class="mb-3">
+
+        <div
+            class="card border-0 shadow-sm rounded-4 overflow-hidden text-center"
+            style="
+                background:
+                linear-gradient(
+                    135deg,
+                    #111827,
+                    #1e3a8a
+                );
+            "
+        >
+
+            <div class="card-body p-4 p-lg-5 text-white">
+
+                <span
+                    class="badge bg-light text-dark rounded-pill px-3 py-2 mb-3"
+                >
+
+                    START NOW
+
+                </span>
+
+                <h2 class="fw-bold mb-3">
+
+                    Ready To Build Your Career?
+
+                </h2>
+
+                <p
+                    class="opacity-75 mb-4 mx-auto"
+                    style="
+                        max-width:700px;
+                    "
+                >
+
+                    Join thousands of recruiters and candidates using TalentSync.
+
+                </p>
+
+                <a
+                    href="/register/"
+                    class="btn btn-light px-5 py-2"
+                >
+
+                    <i class="bi bi-rocket-takeoff-fill me-1"></i>
+
+                    Get Started
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock %}

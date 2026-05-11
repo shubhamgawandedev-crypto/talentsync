@@ -1,0 +1,334 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container py-4">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-9">
+
+            <!-- =========================================
+                 MAIN CARD
+            ========================================== -->
+
+            <div
+                class="card border-0 shadow-sm rounded-4 overflow-hidden"
+            >
+
+                <!-- =========================================
+                     HEADER
+                ========================================== -->
+
+                <div
+                    class="text-white p-4"
+                    style="
+                        background:
+                        linear-gradient(
+                            135deg,
+                            #4f46e5,
+                            #2563eb
+                        );
+                    "
+                >
+
+                    <div class="row align-items-center">
+
+                        <!-- LEFT -->
+
+                        <div class="col-lg-8">
+
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+
+                                <span
+                                    class="badge bg-light text-dark rounded-pill px-3 py-2"
+                                >
+
+                                    🚀 Job Application
+
+                                </span>
+
+                                <span
+                                    class="badge bg-white bg-opacity-25 rounded-pill px-3 py-2 text-white"
+                                >
+
+                                    Hiring Active
+
+                                </span>
+
+                            </div>
+
+                            <h2 class="fw-bold mb-2">
+
+                                Apply for
+                                {{ job.title }}
+
+                            </h2>
+
+                            <p class="opacity-75 mb-0">
+
+                                Submit your resume and professional details
+                                for this opportunity.
+
+                            </p>
+
+                        </div>
+
+                        <!-- RIGHT -->
+
+                        <div class="col-lg-4 text-center mt-4 mt-lg-0">
+
+                            <img
+                                src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                                class="img-fluid floating"
+                                style="max-width:180px;"
+                                loading="lazy"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+                     BODY
+                ========================================== -->
+
+                <div class="card-body p-4">
+
+                    <!-- =========================================
+                         JOB INFO
+                    ========================================== -->
+
+                    <div
+                        class="card border-0 bg-light rounded-4 mb-4"
+                    >
+
+                        <div class="card-body p-4">
+
+                            <div class="row g-3">
+
+                                <!-- LEFT -->
+
+                                <div class="col-lg-6">
+
+                                    <div class="d-flex align-items-center mb-3">
+
+                                        <div
+                                            class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3"
+                                            style="width:55px;height:55px;"
+                                        >
+
+                                            <i
+                                                class="bi bi-building text-primary"
+                                            ></i>
+
+                                        </div>
+
+                                        <div>
+
+                                            <h5 class="fw-bold mb-0">
+
+                                                {{ job.company }}
+
+                                            </h5>
+
+                                            <small class="text-muted">
+
+                                                Hiring Company
+
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                    <p class="mb-2 small">
+
+                                        <i class="bi bi-briefcase-fill text-primary me-2"></i>
+
+                                        <strong>Role:</strong>
+
+                                        {{ job.title }}
+
+                                    </p>
+
+                                    <p class="mb-0 small">
+
+                                        <i class="bi bi-geo-alt-fill text-danger me-2"></i>
+
+                                        <strong>Location:</strong>
+
+                                        {{ job.location }}
+
+                                    </p>
+
+                                </div>
+
+                                <!-- RIGHT -->
+
+                                <div class="col-lg-6">
+
+                                    <p class="mb-2 small">
+
+                                        <i class="bi bi-cash-stack text-success me-2"></i>
+
+                                        <strong>Salary:</strong>
+
+                                        {{ job.salary }}
+
+                                    </p>
+
+                                    <p class="mb-2 small">
+
+                                        <i class="bi bi-lightning-fill text-warning me-2"></i>
+
+                                        <strong>Skills:</strong>
+
+                                        {{ job.skills }}
+
+                                    </p>
+
+                                    <p class="mb-0 small">
+
+                                        <i class="bi bi-calendar-event me-2"></i>
+
+                                        <strong>Posted:</strong>
+
+                                        {{ job.created_at|date:"d M Y" }}
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =========================================
+                         APPLICATION FORM
+                    ========================================== -->
+
+                    <form
+                        method="POST"
+                        enctype="multipart/form-data"
+                    >
+
+                        {% csrf_token %}
+
+                        <!-- RESUME -->
+
+                        <div class="mb-4">
+
+                            <label class="form-label fw-semibold">
+
+                                Upload Resume
+
+                            </label>
+
+                            <div
+                                class="border rounded-4 p-4 text-center bg-light"
+                            >
+
+                                <div
+                                    class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                                    style="width:80px;height:80px;"
+                                >
+
+                                    <i
+                                        class="bi bi-file-earmark-arrow-up-fill text-primary"
+                                        style="font-size:32px;"
+                                    ></i>
+
+                                </div>
+
+                                <h6 class="fw-bold mb-2">
+
+                                    Upload Your Resume
+
+                                </h6>
+
+                                <p class="text-muted small mb-3">
+
+                                    Supported formats:
+                                    PDF and DOCX only
+
+                                </p>
+
+                                <input
+                                    type="file"
+                                    class="form-control"
+                                    name="resume"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- COVER LETTER -->
+
+                        <div class="mb-4">
+
+                            <label class="form-label fw-semibold">
+
+                                Cover Letter
+
+                            </label>
+
+                            <textarea
+                                class="form-control"
+                                rows="5"
+                                name="cover_letter"
+                                placeholder="Write a short professional introduction..."
+                            ></textarea>
+
+                        </div>
+
+
+                        <!-- BUTTONS -->
+
+                        <div class="d-flex flex-wrap gap-3">
+
+                            <button
+                                class="btn btn-primary px-4 py-2"
+                            >
+
+                                <i class="bi bi-send-fill me-1"></i>
+
+                                Submit Application
+
+                            </button>
+
+                            <a
+                                href="/jobs/"
+                                class="btn btn-outline-dark px-4 py-2"
+                            >
+
+                                <i class="bi bi-arrow-left me-1"></i>
+
+                                Back To Jobs
+
+                            </a>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

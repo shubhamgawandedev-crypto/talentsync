@@ -1,0 +1,780 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container py-4">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-10">
+
+            <!-- =========================================
+                 PROFILE HEADER
+            ========================================== -->
+
+            <div
+                class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4"
+            >
+
+                <!-- COVER -->
+
+                <div
+                    style="
+                        height:140px;
+                        background:
+                        linear-gradient(
+                            135deg,
+                            #4f46e5,
+                            #2563eb
+                        );
+                    "
+                ></div>
+
+                <!-- PROFILE -->
+
+                <div class="px-4 pb-4">
+
+                    <div class="row align-items-end">
+
+                        <!-- LEFT -->
+
+                        <div class="col-lg-8">
+
+                            <div class="d-flex align-items-end flex-wrap">
+
+                                <!-- PROFILE IMAGE -->
+
+                                {% if user_data.profile_pic %}
+
+                                    <img
+                                        src="{{ user_data.profile_pic.url }}"
+                                        class="rounded-circle border border-4 border-white shadow"
+                                        width="120"
+                                        height="120"
+                                        style="
+                                            margin-top:-60px;
+                                            object-fit:cover;
+                                        "
+                                        loading="lazy"
+                                    >
+
+                                {% else %}
+
+                                    <img
+                                        src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                                        class="rounded-circle border border-4 border-white shadow"
+                                        width="120"
+                                        height="120"
+                                        style="
+                                            margin-top:-60px;
+                                            object-fit:cover;
+                                        "
+                                        loading="lazy"
+                                    >
+
+                                {% endif %}
+
+                                <!-- INFO -->
+
+                                <div class="ms-3 mt-3">
+
+                                    <h3 class="fw-bold mb-1">
+
+                                        {{ user_data.first_name }}
+                                        {{ user_data.last_name }}
+
+                                    </h3>
+
+                                    <p class="text-primary fw-semibold mb-2">
+
+                                        {{ user_data.headline }}
+
+                                    </p>
+
+                                    <div class="d-flex flex-wrap gap-2">
+
+                                        {% if user_data.role == 'recruiter' %}
+
+<span class="badge bg-dark">
+
+    Recruiter
+
+</span>
+
+{% else %}
+
+<span class="badge bg-primary">
+
+    Candidate
+
+</span>
+
+{% endif %}
+
+                                        <span class="badge bg-success">
+
+                                            Verified
+
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- RIGHT -->
+
+                        <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+
+                            <button
+                                class="btn btn-primary px-4"
+                                data-bs-toggle="modal"
+                                data-bs-target="#editProfileModal"
+                            >
+
+                                <i class="bi bi-pencil-square me-1"></i>
+
+                                Edit Profile
+
+                            </button>
+
+                            {% if user_data.resume %}
+
+                            <a
+                                href="{{ user_data.resume.url }}"
+                                target="_blank"
+                                class="btn btn-dark px-4"
+                            >
+
+                                <i class="bi bi-file-earmark-pdf-fill me-1"></i>
+
+                                Resume
+
+                            </a>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================================
+                 STATS
+            ========================================== -->
+
+            <div class="row g-3 mb-4">
+
+                <!-- SKILLS -->
+
+                <div class="col-md-4">
+
+                    <div
+                        class="card border-0 shadow-sm rounded-4 stats-card h-100"
+                    >
+
+                        <div class="card-body">
+
+                            <div class="d-flex align-items-center">
+
+                                <div
+                                    class="stats-icon bg-primary bg-opacity-10 text-primary me-3"
+                                >
+
+                                    <i class="bi bi-lightning-fill"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h4 class="fw-bold mb-0">
+
+                                        {{ user_data.skills|length }}
+
+                                    </h4>
+
+                                    <small class="text-muted">
+
+                                        Skills
+
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ROLE -->
+
+                <div class="col-md-4">
+
+                    <div
+                        class="card border-0 shadow-sm rounded-4 stats-card h-100"
+                    >
+
+                        <div class="card-body">
+
+                            <div class="d-flex align-items-center">
+
+                                <div
+                                    class="stats-icon bg-success bg-opacity-10 text-success me-3"
+                                >
+
+                                    <i class="bi bi-person-badge-fill"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h4 class="fw-bold mb-0">
+
+                                        Candidate
+
+                                    </h4>
+
+                                    <small class="text-muted">
+
+                                        Account Type
+
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- VERIFIED -->
+
+                <div class="col-md-4">
+
+                    <div
+                        class="card border-0 shadow-sm rounded-4 stats-card h-100"
+                    >
+
+                        <div class="card-body">
+
+                            <div class="d-flex align-items-center">
+
+                                <div
+                                    class="stats-icon bg-danger bg-opacity-10 text-danger me-3"
+                                >
+
+                                    <i class="bi bi-patch-check-fill"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h4 class="fw-bold mb-0">
+
+                                        Verified
+
+                                    </h4>
+
+                                    <small class="text-muted">
+
+                                        Profile Status
+
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================================
+                 PROFILE CONTENT
+            ========================================== -->
+
+            <div class="row g-3">
+
+                <!-- ABOUT -->
+
+                <div class="col-lg-6">
+
+                    <div
+                        class="card border-0 shadow-sm rounded-4 h-100"
+                    >
+
+                        <div class="card-body">
+
+                            <h5 class="fw-bold mb-3">
+
+                                About
+
+                            </h5>
+
+                            <p class="text-muted mb-0">
+
+                                {{ user_data.bio|default:"No bio added yet." }}
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- CONTACT -->
+
+                <div class="col-lg-6">
+
+                    <div
+                        class="card border-0 shadow-sm rounded-4 h-100"
+                    >
+
+                        <div class="card-body">
+
+                            <h5 class="fw-bold mb-3">
+
+                                Contact Information
+
+                            </h5>
+
+                            <div class="d-flex flex-column gap-2">
+
+                                <small>
+
+                                    <i class="bi bi-envelope-fill text-danger me-2"></i>
+
+                                    {{ user_data.email }}
+
+                                </small>
+
+                                <small>
+
+                                    <i class="bi bi-telephone-fill text-success me-2"></i>
+
+                                    {{ user_data.phone }}
+
+                                </small>
+
+                                {% if user_data.linkedin %}
+
+                                <small>
+
+                                    <a
+                                        href="{{ user_data.linkedin }}"
+                                        target="_blank"
+                                        class="text-decoration-none"
+                                    >
+
+                                        <i class="bi bi-linkedin text-primary me-2"></i>
+
+                                        LinkedIn
+
+                                    </a>
+
+                                </small>
+
+                                {% endif %}
+
+                                {% if user_data.github %}
+
+                                <small>
+
+                                    <a
+                                        href="{{ user_data.github }}"
+                                        target="_blank"
+                                        class="text-decoration-none"
+                                    >
+
+                                        <i class="bi bi-github text-dark me-2"></i>
+
+                                        GitHub
+
+                                    </a>
+
+                                </small>
+
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- SKILLS -->
+
+                <div class="col-lg-6">
+
+                    <div
+                        class="card border-0 shadow-sm rounded-4 h-100"
+                    >
+
+                        <div class="card-body">
+
+                            <h5 class="fw-bold mb-3">
+
+                                Skills
+
+                            </h5>
+
+                            <p class="text-muted mb-0">
+
+                                {{ user_data.skills|default:"No skills added yet." }}
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- EDUCATION -->
+
+                <div class="col-lg-6">
+
+                    <div
+                        class="card border-0 shadow-sm rounded-4 h-100"
+                    >
+
+                        <div class="card-body">
+
+                            <h5 class="fw-bold mb-3">
+
+                                Education
+
+                            </h5>
+
+                            <p class="text-muted mb-0">
+
+                                {{ user_data.education|default:"No education added yet." }}
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     EDIT PROFILE MODAL
+========================================== -->
+
+<div
+    class="modal fade"
+    id="editProfileModal"
+    tabindex="-1"
+>
+
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+
+        <div class="modal-content border-0 rounded-4">
+
+            <!-- HEADER -->
+
+            <div class="modal-header border-0 p-4">
+
+                <div>
+
+                    <h4 class="fw-bold mb-1">
+
+                        Edit Profile
+
+                    </h4>
+
+                    <small class="text-muted">
+
+                        Update your professional information
+
+                    </small>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                ></button>
+
+            </div>
+
+
+            <!-- BODY -->
+
+            <div class="modal-body px-4 pb-4">
+
+                <form
+                    method="POST"
+                    enctype="multipart/form-data"
+                >
+
+                    {% csrf_token %}
+
+                    <!-- NAME -->
+
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+
+                            <label class="form-label fw-semibold small">
+
+                                First Name
+
+                            </label>
+
+                            <input
+                                type="text"
+                                name="first_name"
+                                class="form-control"
+                                value="{{ user_data.first_name }}"
+                            >
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <label class="form-label fw-semibold small">
+
+                                Last Name
+
+                            </label>
+
+                            <input
+                                type="text"
+                                name="last_name"
+                                class="form-control"
+                                value="{{ user_data.last_name }}"
+                            >
+
+                        </div>
+
+                    </div>
+
+                    <!-- PHONE -->
+
+                    <div class="mt-3">
+
+                        <label class="form-label fw-semibold small">
+
+                            Phone Number
+
+                        </label>
+
+                        <input
+                            type="text"
+                            name="phone"
+                            class="form-control"
+                            value="{{ user_data.phone }}"
+                        >
+
+                    </div>
+
+                    <!-- HEADLINE -->
+
+                    <div class="mt-3">
+
+                        <label class="form-label fw-semibold small">
+
+                            Professional Headline
+
+                        </label>
+
+                        <input
+                            type="text"
+                            name="headline"
+                            class="form-control"
+                            value="{{ user_data.headline }}"
+                        >
+
+                    </div>
+
+                    <!-- SKILLS -->
+
+                    <div class="mt-3">
+
+                        <label class="form-label fw-semibold small">
+
+                            Skills
+
+                        </label>
+
+                        <textarea
+                            name="skills"
+                            class="form-control"
+                            rows="3"
+                        >{{ user_data.skills }}</textarea>
+
+                    </div>
+
+                    <!-- EDUCATION -->
+
+                    <div class="mt-3">
+
+                        <label class="form-label fw-semibold small">
+
+                            Education
+
+                        </label>
+
+                        <textarea
+                            name="education"
+                            class="form-control"
+                            rows="3"
+                        >{{ user_data.education }}</textarea>
+
+                    </div>
+
+                    <!-- BIO -->
+
+                    <div class="mt-3">
+
+                        <label class="form-label fw-semibold small">
+
+                            About Yourself
+
+                        </label>
+
+                        <textarea
+                            name="bio"
+                            class="form-control"
+                            rows="4"
+                        >{{ user_data.bio }}</textarea>
+
+                    </div>
+
+                    <!-- LINKS -->
+
+                    <div class="row g-3 mt-1">
+
+                        <div class="col-md-6">
+
+                            <label class="form-label fw-semibold small">
+
+                                LinkedIn URL
+
+                            </label>
+
+                            <input
+                                type="url"
+                                name="linkedin"
+                                class="form-control"
+                                value="{{ user_data.linkedin }}"
+                            >
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <label class="form-label fw-semibold small">
+
+                                GitHub URL
+
+                            </label>
+
+                            <input
+                                type="url"
+                                name="github"
+                                class="form-control"
+                                value="{{ user_data.github }}"
+                            >
+
+                        </div>
+
+                    </div>
+
+                    <!-- PROFILE PIC -->
+
+                    <div class="mt-3">
+
+                        <label class="form-label fw-semibold small">
+
+                            Upload Profile Picture
+
+                        </label>
+
+                        <input
+                            type="file"
+                            name="profile_pic"
+                            class="form-control"
+                            accept="image/*"
+                        >
+
+                    </div>
+
+                    <!-- RESUME -->
+
+                    <div class="mt-3">
+
+                        <label class="form-label fw-semibold small">
+
+                            Upload Resume
+
+                        </label>
+
+                        <input
+                            type="file"
+                            name="resume"
+                            class="form-control"
+                        >
+
+                    </div>
+
+                    <!-- BUTTON -->
+
+                    <div class="mt-4">
+
+                        <button
+                            class="btn btn-primary px-4"
+                        >
+
+                            <i class="bi bi-save me-1"></i>
+
+                            Save Changes
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

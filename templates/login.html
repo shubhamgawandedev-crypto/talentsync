@@ -1,0 +1,409 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container py-4">
+
+    <div class="row justify-content-center align-items-center min-vh-75">
+
+        <!-- =========================================
+             LEFT SIDE
+        ========================================== -->
+
+        <div class="col-lg-5 d-none d-lg-block fade-up">
+
+            <div class="pe-lg-4">
+
+                <span
+                    class="badge bg-primary rounded-pill px-3 py-2 mb-3"
+                >
+
+                    🚀 AI Powered Recruitment
+
+                </span>
+
+                <h1 class="fw-bold mb-3">
+
+                    Welcome Back To
+
+                    <span class="text-primary">
+
+                        TalentSync
+
+                    </span>
+
+                </h1>
+
+                <p class="text-muted mb-4">
+
+                    Modern recruitment platform for candidates and recruiters.
+                    Apply for jobs, manage hiring, and grow faster.
+
+                </p>
+
+                <!-- FEATURES -->
+
+                <div class="d-flex flex-column gap-3">
+
+                    <div
+                        class="d-flex align-items-center p-3 bg-white rounded-4 shadow-sm"
+                    >
+
+                        <div
+                            class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center me-3"
+                            style="width:50px;height:50px;"
+                        >
+
+                            <i class="bi bi-briefcase-fill"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h6 class="fw-bold mb-1">
+
+                                Smart Job Search
+
+                            </h6>
+
+                            <small class="text-muted">
+
+                                Find opportunities instantly.
+
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="d-flex align-items-center p-3 bg-white rounded-4 shadow-sm"
+                    >
+
+                        <div
+                            class="bg-success bg-opacity-10 text-success rounded-circle d-flex align-items-center justify-content-center me-3"
+                            style="width:50px;height:50px;"
+                        >
+
+                            <i class="bi bi-people-fill"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h6 class="fw-bold mb-1">
+
+                                Recruiter Dashboard
+
+                            </h6>
+
+                            <small class="text-muted">
+
+                                Manage hiring professionally.
+
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="d-flex align-items-center p-3 bg-white rounded-4 shadow-sm"
+                    >
+
+                        <div
+                            class="bg-danger bg-opacity-10 text-danger rounded-circle d-flex align-items-center justify-content-center me-3"
+                            style="width:50px;height:50px;"
+                        >
+
+                            <i class="bi bi-shield-lock-fill"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h6 class="fw-bold mb-1">
+
+                                Secure Authentication
+
+                            </h6>
+
+                            <small class="text-muted">
+
+                                Protected login system.
+
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================================
+             LOGIN CARD
+        ========================================== -->
+
+        <div class="col-lg-5 fade-up">
+
+            <div
+                class="card border-0 shadow-sm rounded-4 overflow-hidden"
+            >
+
+                <!-- TOP -->
+
+                <div
+                    class="text-center text-white p-4"
+                    style="
+                        background:
+                        linear-gradient(
+                            135deg,
+                            #4f46e5,
+                            #2563eb
+                        );
+                    "
+                >
+
+                    <div
+                        class="bg-white bg-opacity-25 rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                        style="width:80px;height:80px;"
+                    >
+
+                        <i
+                            class="bi bi-person-fill-lock"
+                            style="font-size:36px;"
+                        ></i>
+
+                    </div>
+
+                    <h3 class="fw-bold mb-1">
+
+                        Sign In
+
+                    </h3>
+
+                    <p class="opacity-75 mb-0 small">
+
+                        Access your TalentSync account
+
+                    </p>
+
+                </div>
+
+
+                <!-- FORM -->
+
+                <div class="card-body p-4">
+
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+                        <!-- USERNAME -->
+
+                        <div class="mb-3">
+
+                            <label class="form-label fw-semibold small">
+
+                                Username
+
+                            </label>
+
+                            <div class="input-group">
+
+                                <span
+                                    class="input-group-text bg-light border-0 rounded-start-pill"
+                                >
+
+                                    <i class="bi bi-person-fill"></i>
+
+                                </span>
+
+                                <input
+                                    type="text"
+                                    class="form-control border-0 rounded-end-pill"
+                                    name="username"
+                                    placeholder="Enter username"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+                        <!-- PASSWORD -->
+
+                        <div class="mb-3">
+
+                            <label class="form-label fw-semibold small">
+
+                                Password
+
+                            </label>
+
+                            <div class="input-group">
+
+                                <span
+                                    class="input-group-text bg-light border-0 rounded-start-pill"
+                                >
+
+                                    <i class="bi bi-lock-fill"></i>
+
+                                </span>
+
+                                <input
+                                    type="password"
+                                    class="form-control border-0 rounded-end-pill"
+                                    name="password"
+                                    placeholder="Enter password"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+                        <!-- OPTIONS -->
+
+                        <div
+                            class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2"
+                        >
+
+                            <div class="form-check">
+
+                                <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    id="remember"
+                                >
+
+                                <label
+                                    class="form-check-label small"
+                                    for="remember"
+                                >
+
+                                    Remember Me
+
+                                </label>
+
+                            </div>
+
+                            <a
+                                href="#"
+                                class="text-decoration-none small"
+                            >
+
+                                Forgot Password?
+
+                            </a>
+
+                        </div>
+
+                        <!-- LOGIN -->
+
+                        <div class="d-grid mb-3">
+
+                            <button
+                                class="btn btn-primary py-2"
+                            >
+
+                                <i class="bi bi-box-arrow-in-right me-1"></i>
+
+                                Login
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+
+                    <!-- DIVIDER -->
+
+                    <div class="text-center my-3">
+
+                        <small class="text-muted">
+
+                            OR CONTINUE WITH
+
+                        </small>
+
+                    </div>
+
+
+                    <!-- SOCIAL -->
+
+                    <div class="row g-2 mb-3">
+
+                        <div class="col-6">
+
+                            <a
+                                href="/accounts/google/login/"
+                                class="btn btn-light border w-100"
+                            >
+
+                                <i class="bi bi-google text-danger me-1"></i>
+
+                                Google
+
+                            </a>
+
+                        </div>
+
+                        <div class="col-6">
+
+                            <a
+                                href="/accounts/linkedin_oauth2/login/"
+                                class="btn btn-light border w-100"
+                            >
+
+                                <i class="bi bi-linkedin text-primary me-1"></i>
+
+                                LinkedIn
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- REGISTER -->
+
+                    <div class="text-center">
+
+                        <small class="text-muted d-block mb-2">
+
+                            Don't have an account?
+
+                        </small>
+
+                        <a
+                            href="/register/"
+                            class="btn btn-outline-primary rounded-pill px-4"
+                        >
+
+                            <i class="bi bi-person-plus-fill me-1"></i>
+
+                            Create Account
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
