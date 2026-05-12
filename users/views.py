@@ -7,11 +7,11 @@ from django.contrib.auth import (
 
 from django.contrib.auth.decorators import login_required
 
+
 from django.contrib import messages
 
-from django.core.mail import send_mail
-
 from django.conf import settings
+
 
 from .models import User
 
@@ -55,39 +55,13 @@ def register_view(request):
             email=email,
             password=password,
             role=role,
-            is_active=False
-        )
-
-        verification_link = (
-            f"http://127.0.0.1:8000/verify-email/{user.id}/"
-        )
-
-        send_mail(
-            'Verify Your TalentSync Account',
-
-            f'''
-Hello {username},
-
-Thank you for registering on TalentSync.
-
-Click below to verify your email:
-
-{verification_link}
-
-Regards,
-TalentSync Team
-''',
-
-            settings.EMAIL_HOST_USER,
-
-            [email],
-
-            fail_silently=False,
+            is_active=True,
+            is_verified=True
         )
 
         messages.success(
             request,
-            'Verification email sent successfully.'
+            'Registration successful. You can now log in.'
         )
 
         return redirect('/login/')
